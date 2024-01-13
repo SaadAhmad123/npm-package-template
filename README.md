@@ -1,40 +1,42 @@
-# Sample NPM Package Template
+# NPM Package Template for AWS Lambda
 
-Welcome to a streamlined and efficient template designed for creating and publishing NPM packages. This template serves as a foundation for building robust NPM packages, including notable projects like [`unified-serverless-storage`](https://github.com/SaadAhmad123/unified-serverless-storage), which exemplify the practical application and scalability of this template.
+Welcome to our NPM package template designed for creating and deploying TypeScript-based Node packages on AWS Lambda. This template aims to streamline the development process and provide a consistent structure for AWS Lambda deployments.
 
 ## Key Features
 
-- **Ease of Use**: Simplifies the process of setting up and structuring new NPM packages.
+- **Ease of Use**: Simplifies the process of setting up and structuring new TypeScript-based Node packages on AWS Lambda.
 - **Standardization**: Provides a consistent structure for package development, ensuring best practices.
-- **Integration with GitHub Actions**: Ready-to-use configuration for automated publishing and CI/CD workflows.
+- **AWS Lambda Packaging Script**: Includes a Bash script `./packager.sh` that facilitates the creation of a deployable zip file for AWS Lambda.
 
 ## Steps to Publish Your Package
 
-To get your package from development to publication smoothly, follow these steps:
+To smoothly transition your package from development to publication, follow these steps:
 
-1. **Create a Classic NPM Auth Token**:
-   - Navigate to your NPM account and generate an authentication token specifically for publishing packages. This token is crucial for the next steps in the automated deployment process.
+1. **Clone the Code**: Clone the Git repository and customize the package details in `package.json` as per your project requirements.
 
-2. **Configure GitHub Secrets**:
-   - Go to your GitHub repository's settings.
-   - Navigate to the 'Secrets' section.
-   - Add your NPM authentication token as a new secret with the name `NPM_TOKEN`. This allows GitHub Actions to securely access your NPM account for publishing the package.
+2. **TypeScript Code**: Develop your TypeScript code within the `./src` directory, with `index.ts` serving as the main entry point.
 
-3. **Develop and Test Your Package**:
-   - Use this template as a starting point to develop your package.
-   - Ensure to test thoroughly to maintain high-quality standards.
+3. **Test Code**: Write tests for your code in `./src/*.spec.ts`.
 
-4. **Push to GitHub**:
-   - Once your package is ready and tested, push your changes to GitHub. The configured GitHub Actions will automatically handle the process of publishing your package to NPM, using the provided `NPM_TOKEN`.
+4. **Package Code**: Once your code is ready, use the provided packaging script.
 
-5. **Automated Publishing**:
-   - With the push to GitHub, your package will be automatically published to NPM, making it available for the broader community.
+## Scripts
+
+The following script commands can be executed using `npm` or `yarn`:
+
+- **build**: Transpiles the TypeScript project to JavaScript. You can modify the configuration in `tsconfig.json` if needed.
+- **start**: Executes the built JavaScript code by running `./{ts config build directory (default: dist)}/index.js`.
+- **dev**: Runs the TypeScript code directly by executing `./src/index.ts`.
+- **test**: Executes Jest tests.
+- **format**: Applies Prettier formatting to the code in `./src`.
+- **package:yarn**: Packages the code for AWS Lambda into `./deployable/lambda.zip` using `yarn` as the package manager.
+- **package:npm**: Packages the code for AWS Lambda into `./deployable/lambda.zip` using `npm` as the package manager.
 
 ## Contributing
 
 Contributions to enhance this template are welcome. Whether it's improving the workflow, adding new features, or refining documentation, your input is valuable.
 
-For contributions or feedback, please open an issue or a pull request in this GitHub repository
+For contributions or feedback, please open an issue or a pull request in this GitHub repository.
 
 ## License
 
