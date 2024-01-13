@@ -1,6 +1,6 @@
 # Typescript NodeJS Package Template for AWS Lambda
 
-Welcome to our Typescript NodeJS Package template designed for creating and deploying TypeScript-based Node packages on AWS Lambda. This template aims to streamline the development process and provide a consistent structure for AWS Lambda deployments.
+This template designed for creating and deploying TypeScript-based Node packages on AWS Lambda. This template aims to streamline the development process and provide a consistent structure for AWS Lambda deployments.
 
 ## Key Features
 
