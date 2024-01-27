@@ -10,13 +10,15 @@
     "start": "node ./dist/index.js",
     "dev": "ts-node ./src/index.ts",
     "test": "jest --passWithNoTests",
-    "format": "npx prettier --write ."
+    "format": "npx prettier --write .",
+    "build:doc": "typedoc src/index.ts --plugin @mxssfd/typedoc-theme --theme my-theme"
   },
   "engines": {
     "node": ">=16.10.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.6.2",
+    "@mxssfd/typedoc-theme": "^1.1.3",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.8.7",
     "dotenv": "^16.3.1",
@@ -24,6 +26,7 @@
     "prettier": "^3.0.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.25.7",
     "typescript": "^5.2.2"
   }
 }
