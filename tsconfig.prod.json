@@ -10,10 +10,12 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src/**/*.ts", // Include all TypeScript files in the 'src' directory
-    "tests/**/*.ts" // Include all TypeScript files in the 'tests' directory
+    "src/**/*.ts" // Include all TypeScript files in the 'src' directory
   ],
   "exclude": [
-    "node_modules" // your existing exclude pattern
+    "node_modules", // your existing exclude pattern
+    "**/*.spec.ts", // this line will exclude all .spec.ts files
+    "**/*.spec.data.ts", // this line will exclude all .spec.data.ts files
+    "**/*.spec.lib.ts" // this line will exclude all .spec.lib.ts files
   ]
 }
