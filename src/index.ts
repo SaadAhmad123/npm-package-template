@@ -1,6 +1,6 @@
 import {
   APIGatewayProxyEventV2,
-  APIGatewayProxyResultV2,
+  APIGatewayProxyStructuredResultV2,
   SNSEvent,
   EventBridgeEvent,
   SQSEvent,
@@ -20,7 +20,7 @@ type HandlerEvent =
 export default async function handler(
   event: HandlerEvent,
   context: Context,
-): Promise<APIGatewayProxyResultV2 | void> {
+): Promise<APIGatewayProxyStructuredResultV2 | undefined> {
   if ((event as APIGatewayProxyEventV2)?.requestContext?.http?.method) {
     return await apiGatewayHandler(event as APIGatewayProxyEventV2, context);
   }
@@ -36,4 +36,5 @@ export default async function handler(
       context,
     );
   }
+  return undefined
 }
