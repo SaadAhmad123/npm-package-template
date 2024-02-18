@@ -17,7 +17,7 @@ type HandlerEvent =
   | EventBridgeEvent<any, any>
   | SQSEvent;
 
-export default async function handler(
+export async function handler(
   event: HandlerEvent,
   context: Context,
 ): Promise<APIGatewayProxyStructuredResultV2 | undefined> {
@@ -36,5 +36,4 @@ export default async function handler(
       context,
     );
   }
-  return undefined
 }
