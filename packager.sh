@@ -75,6 +75,12 @@ if [ ! -f "package.json" ]; then
   exit 1
 fi
 
+# Check if 'host.json' does not exist in the current directory
+if [ ! -f "host.json" ]; then
+  echo "Error: No 'host.json' found. This function is not compatible with Azure cloud functions. To make it so, add the said file in the project root."
+  exit 1
+fi
+
 # Check if help option is provided
 if [ -z "$package_manager" ] || [ -z "$directory" ]; then
   echo "Error: Missing required options."
@@ -127,6 +133,11 @@ mkdir -p "$temp_directory"
 echo "Copying contents of '$directory' into '$temp_directory'."
 cp -r "$directory"/* "$temp_directory"
 cp package.json "$temp_directory"
+cp host.json "$temp_directory"/host.json
+
+if [ -f "$temp_directory/index.js" ]; then
+  rm "$temp_directory/index.js"
+fi
 
 # Install only production dependencies using the specified package manager
 echo "Installing production dependencies using '$package_manager' in '$temp_directory'."

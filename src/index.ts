@@ -1,39 +1,10 @@
-import {
-  APIGatewayProxyEventV2,
-  APIGatewayProxyStructuredResultV2,
-  SNSEvent,
-  EventBridgeEvent,
-  SQSEvent,
-  Context,
-} from 'aws-lambda';
-import apiGatewayHandler from './handlers/apiGateway';
-import snsHandler from './handlers/sns';
-import sqsHandler from './handlers/sqs';
-import eventBridgeHandler from './handlers/eventBridge';
-
-type HandlerEvent =
-  | APIGatewayProxyEventV2
-  | SNSEvent
-  | EventBridgeEvent<any, any>
-  | SQSEvent;
-
-export async function handler(
-  event: HandlerEvent,
-  context: Context,
-): Promise<APIGatewayProxyStructuredResultV2 | undefined> {
-  if ((event as APIGatewayProxyEventV2)?.requestContext?.http?.method) {
-    return await apiGatewayHandler(event as APIGatewayProxyEventV2, context);
-  }
-  if ((event as SNSEvent)?.Records?.[0]?.EventSource === 'aws:sns') {
-    return await snsHandler(event as SNSEvent, context);
-  }
-  if ((event as SQSEvent)?.Records?.[0]?.eventSource === 'aws:sqs') {
-    return await sqsHandler(event as SQSEvent, context);
-  }
-  if ((event as EventBridgeEvent<any, any>)?.['detail-type']) {
-    return await eventBridgeHandler(
-      event as EventBridgeEvent<any, any>,
-      context,
-    );
-  }
-}
+/**
+ * DO NOT DELETE THIS FILE.
+ * 
+ * This template enforces v3 for the programming 
+ * pattern of the Azure cloud function. 
+ * https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-node?tabs=typescript%2Cwindows%2Cazure-cli&pivots=nodejs-model-v3
+ * 
+ * Code your functions in one of the functions files
+ * e.g. Index
+ */
