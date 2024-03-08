@@ -1,19 +1,23 @@
 {
   "version": "2.0",
   "logging": {
-      "applicationInsights": {
-          "samplingSettings": {
-              "isEnabled": true,
-              "excludedTypes": "Request"
-          }
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
       }
+    }
+  },
+  "functionTimeout": "00:01:00",
+  "extensions": {
+    "http": {
+      "routePrefix": "api",
+      "maxOutstandingRequests": 200,
+      "maxConcurrentRequests": 100
+    }
   },
   "extensionBundle": {
-      "id": "Microsoft.Azure.Functions.ExtensionBundle",
-      "version": "[3.15.0, 4.0.0)"
-  },
-  "concurrency": {
-      "dynamicConcurrencyEnabled": true,
-      "snapshotPersistenceEnabled": true
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[3.*, 4.0.0)"
   }
 }
